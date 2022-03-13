@@ -1,8 +1,8 @@
-package service.impl;
+package com.xichuan.common.service.impl;
 
-import com.xichuan.common.entity.MoocBackendUserT;
-import com.xichuan.common.mapper.MoocBackendUserTMapper;
-import service.IMoocBackendUserTService;
+import com.xichuan.common.dao.entity.MoocBackendUserT;
+import com.xichuan.common.dao.mapper.MoocBackendUserTMapper;
+import com.xichuan.common.service.IMoocBackendUserTService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

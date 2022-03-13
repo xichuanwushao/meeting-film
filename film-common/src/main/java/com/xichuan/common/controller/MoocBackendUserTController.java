@@ -1,4 +1,4 @@
-package controller;
+package com.xichuan.common.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

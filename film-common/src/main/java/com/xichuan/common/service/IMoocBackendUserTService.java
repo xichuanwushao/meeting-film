@@ -1,6 +1,6 @@
-package service;
+package com.xichuan.common.service;
 
-import com.xichuan.common.entity.MoocBackendUserT;
+import com.xichuan.common.dao.entity.MoocBackendUserT;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
