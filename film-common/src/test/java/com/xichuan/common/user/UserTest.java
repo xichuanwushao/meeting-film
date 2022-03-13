@@ -1,5 +1,6 @@
 package com.xichuan.common.user;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xichuan.common.FilmCommonApplicationTest;
 import com.xichuan.common.dao.entity.MoocBackendUserT;
 import com.xichuan.common.dao.mapper.MoocBackendUserTMapper;
@@ -18,11 +19,13 @@ public class UserTest extends FilmCommonApplicationTest {
     private MoocBackendUserTMapper moocBackendUserTMapper;
     @Test
     public void add(){
-        MoocBackendUserT user = new MoocBackendUserT();
-        user.setUserName("zhangsan");
-        user.setUserPwd("qwe123");
-        user.setUserPhone("899-2123-1323");
-        moocBackendUserTMapper.insert(user);
+        for(int i=0;i<6;i++){
+            MoocBackendUserT user = new MoocBackendUserT();
+            user.setUserName("zhangsan"+i);
+            user.setUserPwd("qwe123"+i);
+            user.setUserPhone("899-2123-1323"+i);
+            moocBackendUserTMapper.insert(user);
+        }
 
     }
     @Test
@@ -47,5 +50,30 @@ public class UserTest extends FilmCommonApplicationTest {
         moocBackendUserTS.stream().forEach(
             System.out::println
         );
+
+    }
+
+    @Test
+    public void selectTall(){
+        QueryWrapper queryWrapper = new QueryWrapper();
+//        queryWrapper.eq("user_name","zhangsan2");
+        queryWrapper.like("user_name","zhangsan");
+        List<MoocBackendUserT> moocBackendUserTS = moocBackendUserTMapper.selectList(queryWrapper);
+        moocBackendUserTS.stream().forEach(
+                System.out::println
+        );
+    }
+
+    @Test
+    public void updateTall(){
+
+        MoocBackendUserT user2 = new MoocBackendUserT();
+        user2.setUserName("zhangsan8");
+        user2.setUserPwd("admin123");
+        user2.setUserPhone("899-2123-1323");
+
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("user_name","zhangsan5");
+        moocBackendUserTMapper.update(user2,queryWrapper);
     }
 }
