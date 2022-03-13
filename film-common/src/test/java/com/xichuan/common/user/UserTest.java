@@ -1,6 +1,8 @@
 package com.xichuan.common.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xichuan.common.FilmCommonApplicationTest;
 import com.xichuan.common.dao.entity.MoocBackendUserT;
 import com.xichuan.common.dao.mapper.MoocBackendUserTMapper;
@@ -75,5 +77,20 @@ public class UserTest extends FilmCommonApplicationTest {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_name","zhangsan5");
         moocBackendUserTMapper.update(user2,queryWrapper);
+    }
+
+    @Test
+    public void selectPage(){
+        //分页对象
+        Page<MoocBackendUserT> page = new Page<MoocBackendUserT>(1,3);
+        //条件
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.like("user_name","zhangsan");
+
+        IPage<MoocBackendUserT> iPage = moocBackendUserTMapper.selectPage(page, queryWrapper);
+        iPage.getRecords().stream().forEach(
+                System.out::println
+        );
+
     }
 }
